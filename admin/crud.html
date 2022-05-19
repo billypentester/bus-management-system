@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Bus Admin Panel</title>
+
+  <link rel="shortcut icon" type="image/ico" href="assets/images/favicon.ico" />
+
+  <!-- Main style -->
+  <link href="assets/css/style-default.css" rel="stylesheet">
+
+  <style>body { display: none; }</style>
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body class="hidden with-overlay-scrollbars">
+
+  <div id="wrapper" class="fixed-sidebar fixed-topbar">
+
+    <!-- Topbar -->
+    <nav id="topbar" class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="navbar-header">
+        <a class="toggle-sidebar"><i class="ti-menu"></i></a>
+        <a class="navbar-brand" href="index.html">
+          <span>Admin Panel</span>
+        </a>
+      </div>
+      <!-- /.navbar-header -->
+      <ul class="nav navbar-nav navbar-left search-nav">
+        <li class="search">
+          <i class="ti-search"></i>
+          <form>
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right profile-nav">
+        <li class="dropdown">
+          <a class="dropdown-toggle user" data-toggle="dropdown" href="#">
+            <img class="avatar" src="assets/images/avatar3.png">
+            <span class="name hidden-sm hidden-xs">Admin</span>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu dropdown-user">
+            <li><a href="#"><i class="ti-settings"></i> Settings</a></li>
+            <li class="divider"></li>
+            <li><a href="./../login.html"><i class="ti-power-off"></i> Logout</a></li>
+          </ul>
+          <!-- /.dropdown-user -->
+        </li>
+        <!-- /.dropdown -->
+      </ul>
+    </nav>
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar overlay-scrollbar" role="navigation">
+      <div class="sidebar-nav">
+        <ul class="nav" id="side-menu">
+          <li>
+            <a href="index.html">
+              <i class="ti-stats-up"></i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+          <li>
+            <a href="crud.html">
+              <i class="ti-write"></i>
+              <p>CRUD</p>
+            </a>
+          </li>
+          <li>
+            <a href="tables.html">
+              <i class="ti-layout"></i>
+              <p>Tables</p>
+            </a>
+          </li>
+          <li>
+            <a href="forms.html">
+              <i class="ti-pencil-alt"></i>
+              <p>Forms</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="page-wrapper">
+
+      <div class="row">
+        <div class="col-lg-12 heading">
+          <h1 class="page-header">CRUD</h1>
+          <ol class="breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li class="active">Bus CRUD</li>
+          </ol>
+        </div>
+        <!-- /.col-lg-12 -->
+      </div>
+      <!-- /.row -->
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="panel panel-default no-border">
+            <div class="panel-body">
+              <button class="btn btn-primary" data-toggle="modal" data-target="#modal">
+                Create Bus
+              </button>
+
+              <form role="form" class="filter-panel">
+                <div class="row">
+                  <div class="col-md-3 form-group">
+                    <label>Name</label>
+                    <input type="text" class="form-control">
+                  </div>
+                  <div class="col-md-3 form-group">
+                    <label>From</label>
+                    <select class="form-control select2" multiple>
+                      <option value="Lahore">Lahore</option> 
+                      <option value="Multan">Multan</option> 
+                      <option value="RawalPindi">RawalPindi</option> 
+                      <option value="Quetta">Quetta</option> 
+                      <option value="Islamabad" selected>Islamabad</option> 
+                    </select>
+                  </div>
+                  <div class="col-md-3 form-group">
+                    <label>To</label>
+                    <select class="form-control select2" multiple>
+                      <option value="Lahore" selected>Lahore</option> 
+                      <option value="Multan">Multan</option> 
+                      <option value="RawalPindi">RawalPindi</option> 
+                      <option value="Quetta">Quetta</option> 
+                      <option value="Islamabad">Islamabad</option> 
+                    </select>
+                  </div>
+                  <div class="col-md-3 form-group">
+                    <label>Departure At</label>
+                    <div class="input-group date" id="datetimepicker">
+                      <input type="text" class="form-control">
+                      <span class="input-group-addon">
+                        <i class="ti-calendar"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12 form-group text-right">
+                    <button type="submit" class="btn btn-info">
+                      <span class="glyphicon glyphicon-search"></span>
+                      Search
+                    </button>
+                    <button type="reset" class="btn btn-default">
+                      Reset
+                    </button>
+                  </div>
+                </div>
+              </form>
+              <div class="table-responsive">
+                <table width="100%" class="table table-striped table-hover">
+                  <thead>
+                    <tr>
+                      <th style="width: 40px">
+                        <div class="checkbox">
+                          <input class="styled select-all-checkboxes" type="checkbox">
+                          <label></label>
+                        </div>
+                      </th>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>From</th>
+                      <th>To</th>
+                      <th>Departure At</th>
+                      <th style="width: 135px">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="checkbox">
+                          <input class="styled" name="selected[]" value="1" type="checkbox">
+                          <label></label>
+                        </div>
+                      </td>
+                      <td>1</td>
+                      <td>Faisal Movers</td>
+                      <td>RawalPindi</td>
+                      <td>Quetta</td>
+                      <td>01/02/2019 2:45 PM</td>
+                      <td>
+                        <button class="btn btn-xs btn-info" data-toggle="modal" data-target="#modal">
+                          <span class="glyphicon glyphicon-pencil"></span>
+                          Edit
+                        </button>
+                        <button class="btn btn-xs btn-danger">
+                          <span class="glyphicon glyphicon-remove"></span>
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="checkbox">
+                          <input class="styled" name="selected[]" value="2" type="checkbox">
+                          <label></label>
+                        </div>
+                      </td>
+                      <td>2</td>
+                      <td>Daewoo Express</td>
+                      <td>Lahore</td>
+                      <td>Islamabad</td>
+                      <td>01/02/2019 3:12 PM</td>
+                      <td>
+                        <button class="btn btn-xs btn-info" data-toggle="modal" data-target="#modal">
+                          <span class="glyphicon glyphicon-pencil"></span>
+                          Edit
+                        </button>
+                        <button class="btn btn-xs btn-danger">
+                          <span class="glyphicon glyphicon-remove"></span>
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="checkbox">
+                          <input class="styled" name="selected[]" value="3" type="checkbox">
+                          <label></label>
+                        </div>
+                      </td>
+                      <td>3</td>
+                      <td>Bilal Travels</td>
+                      <td>Multan</td>
+                      <td>Lahore</td>
+                      <td>02/02/2019 1:45 PM</td>
+                      <td>
+                        <button class="btn btn-xs btn-info" data-toggle="modal" data-target="#modal">
+                          <span class="glyphicon glyphicon-pencil"></span>
+                          Edit
+                        </button>
+                        <button class="btn btn-xs btn-danger">
+                          <span class="glyphicon glyphicon-remove"></span>
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="checkbox">
+                          <input class="styled" name="selected[]" value="4" type="checkbox">
+                          <label></label>
+                        </div>
+                      </td>
+                      <td>4</td>
+                      <td>Road Master</td>
+                      <td>Islamabad</td>
+                      <td>Quetta</td>
+                      <td>03/02/2019 3:12 PM</td>
+                      <td>
+                        <button class="btn btn-xs btn-info" data-toggle="modal" data-target="#modal">
+                          <span class="glyphicon glyphicon-pencil"></span>
+                          Edit
+                        </button>
+                        <button class="btn btn-xs btn-danger">
+                          <span class="glyphicon glyphicon-remove"></span>
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="checkbox">
+                          <input class="styled" name="selected[]" value="5" type="checkbox">
+                          <label></label>
+                        </div>
+                      </td>
+                      <td>5</td>
+                      <td>Niazi Express</td>
+                      <td>Lahore</td>
+                      <td>RawalPindi</td>
+                      <td>02/02/2019 2:20 PM</td>
+                      <td>
+                        <button class="btn btn-xs btn-info" data-toggle="modal" data-target="#modal">
+                          <span class="glyphicon glyphicon-pencil"></span>
+                          Edit
+                        </button>
+                        <button class="btn btn-xs btn-danger">
+                          <span class="glyphicon glyphicon-remove"></span>
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="checkbox">
+                          <input class="styled" name="selected[]" value="6" type="checkbox">
+                          <label></label>
+                        </div>
+                      </td>
+                      <td>6</td>
+                      <td>Manthar Transport</td>
+                      <td>Quetta</td>
+                      <td>Multan</td>
+                      <td>02/02/2019 4:05 PM</td>
+                      <td>
+                        <button class="btn btn-xs btn-info" data-toggle="modal" data-target="#modal">
+                          <span class="glyphicon glyphicon-pencil"></span>
+                          Edit
+                        </button>
+                        <button class="btn btn-xs btn-danger">
+                          <span class="glyphicon glyphicon-remove"></span>
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="checkbox">
+                          <input class="styled" name="selected[]" value="7" type="checkbox">
+                          <label></label>
+                        </div>
+                      </td>
+                      <td>7</td>
+                      <td>Q Connect</td>
+                      <td>RawalPindi</td>
+                      <td>Islamabad</td>
+                      <td>02/02/2019 4:12 PM</td>
+                      <td>
+                        <button class="btn btn-xs btn-info" data-toggle="modal" data-target="#modal">
+                          <span class="glyphicon glyphicon-pencil"></span>
+                          Edit
+                        </button>
+                        <button class="btn btn-xs btn-danger">
+                          <span class="glyphicon glyphicon-remove"></span>
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="checkbox">
+                          <input class="styled" name="selected[]" value="8" type="checkbox">
+                          <label></label>
+                        </div>
+                      </td>
+                      <td>8</td>
+                      <td>Kohistan Express</td>
+                      <td>Islamabad</td>
+                      <td>Multan</td>
+                      <td>03/02/2019 2:24 PM</td>
+                      <td>
+                        <button class="btn btn-xs btn-info" data-toggle="modal" data-target="#modal">
+                          <span class="glyphicon glyphicon-pencil"></span>
+                          Edit
+                        </button>
+                        <button class="btn btn-xs btn-danger">
+                          <span class="glyphicon glyphicon-remove"></span>
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="checkbox">
+                          <input class="styled" name="selected[]" value="9" type="checkbox">
+                          <label></label>
+                        </div>
+                      </td>
+                      <td>9</td>
+                      <td>Pakistan Express Khalid Express</td>
+                      <td>Multan</td>
+                      <td>RawalPindi</td>
+                      <td>03/02/2019 3:12 PM</td>
+                      <td>
+                        <button class="btn btn-xs btn-info" data-toggle="modal" data-target="#modal">
+                          <span class="glyphicon glyphicon-pencil"></span>
+                          Edit
+                        </button>
+                        <button class="btn btn-xs btn-danger">
+                          <span class="glyphicon glyphicon-remove"></span>
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="checkbox">
+                          <input class="styled" name="selected[]" value="10" type="checkbox">
+                          <label></label>
+                        </div>
+                      </td>
+                      <td>10</td>
+                      <td>Waraich Express</td>
+                      <td>Quetta</td>
+                      <td>Lahore</td>
+                      <td>03/02/2019 6:42 PM</td>
+                      <td>
+                        <button class="btn btn-xs btn-info" data-toggle="modal" data-target="#modal">
+                          <span class="glyphicon glyphicon-pencil"></span>
+                          Edit
+                        </button>
+                        <button class="btn btn-xs btn-danger">
+                          <span class="glyphicon glyphicon-remove"></span>
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <ul class="pagination pagination-sm no-border">
+                <li class="page-item">
+                  <a class="page-link" href="#">«</a>
+                </li>
+                <li class="page-item active">
+                  <a class="page-link" href="#">1</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">2</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">3</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">4</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">5</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">»</a>
+                </li>
+              </ul>
+            </div>
+            <!-- /.panel-body -->
+          </div>
+          <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+      </div>
+      <!-- /.row -->
+      <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">Create Bus</h4>
+            </div>
+            <div class="modal-body">
+              <form role="form">
+                <div class="row">
+                  <div class="col-md-6 form-group">
+                    <label>Name</label>
+                    <input type="text" placeholder="Name" class="form-control">
+                  </div>
+                  <div class="col-md-6 form-group">
+                    <label>From</label>
+                    <input type="text" placeholder="Enter Source" class="form-control">
+                  </div>
+                  <div class="col-md-6 form-group">
+                    <label>To</label>
+                    <input type="text" placeholder="Enter Destination" class="form-control">
+                  </div>
+                  <div class="col-md-6 form-group">
+                    <label>Departure Time</label>
+                    <input type="date" placeholder="time" class="form-control">
+                  </div>
+                  <div class="col-md-12 form-group">
+                    <label>Information</label>
+                    <textarea class="form-control"></textarea>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="checkbox checkbox-success">
+                      <input type="checkbox" id="checkbox">
+                      <label for="checkbox">
+                        Approve
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- /#page-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+
+  <!-- jQuery -->
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+
+  <!-- Bootstrap Core JavaScript -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+  <!-- Metis Menu -->
+  <script src="assets/vendor/metisMenu/metisMenu.min.js"></script>
+
+  <!-- OverlayScrollbars -->
+  <script src="assets/vendor/overlayscrollbars/jquery.overlayScrollbars.min.js"></script>
+
+  <!-- Bootstrap Notify -->
+  <script src="assets/vendor/bootstrap-notify/bootstrap-notify.min.js"></script>
+
+  <!-- Moment.js (for Bootstrap Datetimepicker & Chart.js) -->
+  <script src="assets/vendor/moment/moment.min.js"></script>
+
+  <!-- Bootstrap Datetimepicker -->
+  <script src="assets/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+
+  <!-- Select2 -->
+  <script src="assets/vendor/select2/js/select2.min.js"></script>
+
+  <!-- Chart.js -->
+  <script src="assets/vendor/chart.js/Chart.min.js"></script>
+
+  <!-- Lightbox -->
+  <script src="assets/vendor/lightbox2/lightbox.min.js"></script>
+
+  <!-- Custom Theme JavaScript -->
+  <script src="assets/js/light-admin.js"></script>
+
+
+  <script>
+    $(function () {
+      $('#datetimepicker').datetimepicker();
+      $('.select2').select2({ theme: 'bootstrap' });
+    });
+  </script>
+
+
+</body>
+</html>

@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Bus Admin Panel</title>
+
+  <link rel="shortcut icon" type="image/ico" href="assets/images/favicon.ico" />
+
+  
+  <link href="assets/css/style-default.css" rel="stylesheet">
+
+  <style>body { display: none; }</style>
+
+  
+  
+  
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+</head>
+<body class="hidden with-overlay-scrollbars">
+
+  <div id="wrapper" class="fixed-sidebar fixed-topbar">
+
+    
+    <nav id="topbar" class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="navbar-header">
+        <a class="toggle-sidebar"><i class="ti-menu"></i></a>
+        <a class="navbar-brand" href="index.html">
+          <span>Admin Panel</span>
+        </a>
+      </div>
+      
+      <ul class="nav navbar-nav navbar-left search-nav">
+        <li class="search">
+          <i class="ti-search"></i>
+          <form>
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right profile-nav">
+        <li class="dropdown">
+          <a class="dropdown-toggle user" data-toggle="dropdown" href="#">
+            <img class="avatar" src="assets/images/avatar3.png">
+            <span class="name hidden-sm hidden-xs">Admin</span>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu dropdown-user">
+            <li><a href="#"><i class="ti-settings"></i> Settings</a></li>
+            <li class="divider"></li>
+            <li><a href="./../login.html"><i class="ti-power-off"></i> Logout</a></li>
+          </ul>
+          
+        </li>
+        
+      </ul>
+    </nav>
+
+    
+    <div id="sidebar" class="sidebar overlay-scrollbar" role="navigation">
+      <div class="sidebar-nav">
+        <ul class="nav" id="side-menu">
+          <li>
+            <a href="index.html">
+              <i class="ti-stats-up"></i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+          <li>
+            <a href="crud.html">
+              <i class="ti-write"></i>
+              <p>CRUD</p>
+            </a>
+          </li>
+          <li>
+            <a href="tables.html">
+              <i class="ti-layout"></i>
+              <p>Tables</p>
+            </a>
+          </li>
+          <li>
+            <a href="forms.html">
+              <i class="ti-pencil-alt"></i>
+              <p>Forms</p>
+            </a>
+          </li>
+         
+        </ul>
+      </div>
+    </div>
+
+    <div id="page-wrapper">
+
+<div class="row">
+  <div class="col-lg-3 col-md-6 col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-xs-3 icon">
+            <i class="ti-stats-up icon-huge icon-success"></i>
+          </div>
+          <div class="col-xs-9 text-right">
+            <div class="counter">256</div>
+            <div class="description">New Tickets</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-6 col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-xs-3 icon">
+            <i class="ti-user icon-huge icon-info"></i>
+          </div>
+          <div class="col-xs-9 text-right">
+            <div class="counter">234</div>
+            <div class="description">New Users</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-6 col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-xs-3 icon">
+            <i class="ti-pulse icon-huge icon-warning"></i>
+          </div>
+          <div class="col-xs-9 text-right">
+            <div class="counter">7%</div>
+            <div class="description">Buses Load</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-6 col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-xs-3 icon">
+            <i class="ti-comments icon-huge icon-danger"></i>
+          </div>
+          <div class="col-xs-9 text-right">
+            <div class="counter">27</div>
+            <div class="description">Feadback</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-7">
+    <div class="panel panel-default no-border">
+      <div class="panel-heading no-border">
+        Site Visits
+      </div>
+      
+      <div class="panel-body">
+        <canvas id="area-chart"></canvas>
+      </div>
+
+      <div class="my-10">
+        <div class="panel panel-default no-border">
+          <div class="panel-heading no-border">
+            Pessengers Visits
+          </div>
+          <!-- /.panel-heading -->
+          <div class="panel-body">
+            <canvas id="bar-chart"></canvas>
+          </div>
+          <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+      </div>
+      
+    </div>
+    
+
+
+  </div>
+
+  
+  
+  <div class="col-md-5">
+
+    <div class="panel panel-default no-border">
+      <div class="panel-heading no-border">
+       Bus Statistics
+      </div>
+      
+      <div class="panel-body">
+        <canvas id="pie-chart"></canvas>
+        <br>
+        <a class="btn btn-block btn-lg">View More</a>
+      </div>
+      
+    </div>
+
+    
+
+    <div class="panel panel-default no-border">
+      <div class="panel-heading no-border">
+        Pessenger Statistics
+      </div>
+      
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+            <tr>
+              <th style="width: 5%">#</th>
+              <th style="width: 30%">Name</th>
+              <th style="width: 65%">Progress</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>1</td>
+              <td>
+                Regular
+              </td>
+              <td>
+                <div class="progress no-margin">
+                  <div class="progress-bar progress-bar-success" style="width: 65%">
+                    65%
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>
+               Standard
+              </td>
+              <td>
+                <div class="progress no-margin">
+                  <div class="progress-bar progress-bar-warning" style="width: 37%">
+                    37%
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>
+               Premium
+                <a class="btn btn-xs btn-link" href="#">
+                  <span class="glyphicon glyphicon-new-window text-small"></span>
+                </a>
+              </td>
+              <td>
+                <div class="progress no-margin">
+                  <div class="progress-bar progress-bar-danger" style="width: 15%">
+                    15%
+                  </div>
+                </div>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        
+      </div>
+      
+    </div>
+
+    
+
+    
+  </div>
+  
+</div>
+
+
+    </div>
+    
+
+  </div>
+  
+
+
+
+  
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+
+  
+  <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+  
+  <script src="assets/vendor/metisMenu/metisMenu.min.js"></script>
+
+  
+  <script src="assets/vendor/overlayscrollbars/jquery.overlayScrollbars.min.js"></script>
+
+  
+  <script src="assets/vendor/bootstrap-notify/bootstrap-notify.min.js"></script>
+
+  
+  <script src="assets/vendor/moment/moment.min.js"></script>
+
+  
+  <script src="assets/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+
+  
+  <script src="assets/vendor/select2/js/select2.min.js"></script>
+
+  
+  <script src="assets/vendor/chart.js/Chart.min.js"></script>
+
+  
+  <script src="assets/vendor/lightbox2/lightbox.min.js"></script>
+
+  
+  <script src="assets/js/light-admin.js"></script>
+
+  <script>
+
+    window.onload = function()
+    {
+
+      window.barChart = new Chart(document.getElementById('bar-chart').getContext('2d'), {
+        type: 'bar',
+        data: {
+          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+          datasets: [{
+            label: 'Dataset 1',
+            backgroundColor: window.chartColors.red,
+            borderColor: window.chartColors.red,
+            borderWidth: 1,
+            data: [
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor()
+            ]
+          }, {
+            label: 'Dataset 2',
+            backgroundColor: window.chartColors.blue,
+            borderColor: window.chartColors.blue,
+            borderWidth: 1,
+            data: [
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor()
+            ]
+          }]
+        },
+        options: {
+          responsive: true,
+          title: {
+            display: false
+          },
+          legend: {
+            display: false
+          }
+        }
+      });
+
+
+    }
+
+  </script>
+
+  
+
+
+  <script>
+    $(function() {
+
+      window.areaChart = new Chart(document.getElementById('area-chart').getContext('2d'), {
+        type: 'line',
+        data: {
+          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+          datasets: [{
+            label: 'First dataset',
+            borderColor: window.chartColors.red,
+            backgroundColor: window.chartColors.red,
+            fill: false,
+            data: [
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor()
+            ],
+          }, {
+            label: 'Second dataset',
+            borderColor: window.chartColors.yellow,
+            backgroundColor: window.chartColors.yellow,
+            fill: false,
+            data: [
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor()
+            ],
+          }, {
+            label: 'Third dataset',
+            borderColor: window.chartColors.green,
+            backgroundColor: window.chartColors.green,
+            fill: false,
+            data: [
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor()
+            ],
+          }]
+        },
+        options: {
+          responsive: true,
+          title: {
+            display: false
+          },
+          tooltips: {
+            mode: 'index',
+          },
+          hover: {
+            mode: 'index'
+          },
+          legend: {
+            display: false
+          },
+          scales: {
+            xAxes: [{
+              scaleLabel: {
+                display: false,
+                labelString: 'Month'
+              }
+            }],
+            yAxes: [{
+              stacked: true,
+              scaleLabel: {
+                display: false,
+                labelString: 'Value'
+              }
+            }]
+          }
+        }
+      });
+
+      window.pieChart = new Chart(document.getElementById('pie-chart').getContext('2d'), {
+        type: 'pie',
+        data: {
+          datasets: [{
+            data: [
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+              randomScalingFactor(),
+            ],
+            backgroundColor: [
+              window.chartColors.red,
+              window.chartColors.orange,
+              window.chartColors.yellow,
+              window.chartColors.green,
+              window.chartColors.blue,
+            ],
+            label: 'Dataset 1'
+          }],
+          labels: [
+            'Red',
+            'Orange',
+            'Yellow',
+            'Green',
+            'Blue'
+          ]
+        },
+        options: {
+          responsive: true,
+          legend: {
+            display: false
+          }
+        }
+      });
+    });
+  </script>
+
+
+</body>
+</html>
